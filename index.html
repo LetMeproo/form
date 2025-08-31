@@ -1,45 +1,59 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>بوابة الشركة — الحضور والانصراف</title>
-    <meta name="description" content="صفحة هبوط أنيقة مع زر لتسجيل الحضور والانصراف عبر نموذج آمن، وزر ثانٍ للوحة المشرف." />
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Tajawal", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "Helvetica Neue", "Arial", "\"Apple Color Emoji\"", "\"Segoe UI Emoji\""],
-            },
-            boxShadow: {
-              soft: "0 10px 25px rgba(0,0,0,0.08)",
-            },
-            backgroundImage: {
-              'mesh': "radial-gradient(1200px 600px at 80% -10%, rgba(34,197,94,0.12), transparent 60%), radial-gradient(900px 500px at -10% 20%, rgba(59,130,246,0.14), transparent 60%), radial-gradient(700px 400px at 110% 80%, rgba(168,85,247,0.15), transparent 60%)",
-            },
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>بوابة الشركة — الحضور والانصراف</title>
+  <meta name="description" content="صفحة هبوط أنيقة مع زر لتسجيل الحضور والانصراف عبر نموذج آمن، وزر ثانٍ للوحة المشرف." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Tajawal", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "Helvetica Neue", "Arial", "\"Apple Color Emoji\"", "\"Segoe UI Emoji\""],
+          },
+          boxShadow: { soft: "0 10px 25px rgba(0,0,0,0.08)" },
+          backgroundImage: {
+            'mesh': "radial-gradient(1200px 600px at 80% -10%, rgba(34,197,94,0.12), transparent 60%), radial-gradient(900px 500px at -10% 20%, rgba(59,130,246,0.14), transparent 60%), radial-gradient(700px 400px at 110% 80%, rgba(168,85,247,0.15), transparent 60%)",
           },
         },
-      };
-    </script>
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: saturate(140%) blur(14px);
+      -webkit-backdrop-filter: saturate(140%) blur(14px);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 bg-mesh font-sans text-slate-800 selection:bg-indigo-200 selection:text-slate-900">
 
-    <!-- Google Fonts: Tajawal -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- شاشة كلمة المرور -->
+  <div id="password-screen" class="fixed inset-0 bg-slate-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-3xl shadow-lg p-8 max-w-md w-full text-center">
+      <h1 class="text-2xl font-bold mb-4">التحقق من الوصول</h1>
+      <p class="text-slate-600 mb-6">أدخل كلمة المرور للوصول إلى النظام</p>
 
-    <style>
-      .glass {
-        background: rgba(255, 255, 255, 0.72);
-        backdrop-filter: saturate(140%) blur(14px);
-        -webkit-backdrop-filter: saturate(140%) blur(14px);
-      }
-    </style>
-  </head>
-  <body class="min-h-screen bg-slate-50 bg-mesh font-sans text-slate-800 selection:bg-indigo-200 selection:text-slate-900">
+      <input id="passwordInput" type="password" placeholder="كلمة المرور"
+        class="w-full px-4 py-3 border border-slate-300 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+
+      <button onclick="checkPassword()" 
+        class="w-full bg-gradient-to-r from-indigo-600 to-emerald-600 text-white py-3 rounded-xl font-bold hover:opacity-90 transition">
+        دخول
+      </button>
+
+      <p id="errorMsg" class="text-red-600 text-sm mt-4 hidden">كلمة المرور غير صحيحة!</p>
+    </div>
+  </div>
+
+  <!-- المحتوى الرئيسي -->
+  <div id="main-content" class="hidden">
     <!-- Navbar -->
     <header class="w-full">
       <nav class="max-w-6xl mx-auto px-4 md:px-6 py-5 flex items-center justify-between">
@@ -139,23 +153,35 @@
         </div>
       </div>
     </footer>
+  </div>
 
-    <script>
-      // ===== معلومات تجريبية =====
-      const lastUpdatedEl = document.getElementById('lastUpdated');
-      const progressBarEl = document.getElementById('progressBar');
-      const yearEl = document.getElementById('year');
-      const now = new Date();
-      yearEl.textContent = now.getFullYear();
-      lastUpdatedEl.textContent = new Intl.DateTimeFormat('ar-EG', { dateStyle: 'medium', timeStyle: 'short' }).format(now);
-      const demo = Math.floor(Math.random() * 18) + 18;
-      progressBarEl.style.width = Math.min(100, Math.round((demo/42)*100)) + '%';
+  <script>
+    // معلومات تجريبية
+    const yearEl = document.getElementById('year');
+    const now = new Date();
+    yearEl.textContent = now.getFullYear();
+    document.getElementById('lastUpdated').textContent =
+      new Intl.DateTimeFormat('ar-EG', { dateStyle: 'medium', timeStyle: 'short' }).format(now);
+    const demo = Math.floor(Math.random() * 18) + 18;
+    document.getElementById('progressBar').style.width = Math.min(100, Math.round((demo/42)*100)) + '%';
 
-      // ===== زر فتح النموذج =====
-      const openBtn = document.getElementById('openAttendance');
-      openBtn.addEventListener('click', () => {
-        window.open('https://forms.gle/vHLTFPecqijVEYGU7', '_blank');
-      });
-    </script>
-  </body>
+    // زر الحضور والانصراف
+    document.getElementById('openAttendance').addEventListener('click', () => {
+      window.open('https://forms.gle/vHLTFPecqijVEYGU7', '_blank');
+    });
+
+    // كلمة المرور
+    const correctPassword = "12345";
+    function checkPassword() {
+      const entered = document.getElementById("passwordInput").value;
+      const errorMsg = document.getElementById("errorMsg");
+      if (entered === correctPassword) {
+        document.getElementById("password-screen").classList.add("hidden");
+        document.getElementById("main-content").classList.remove("hidden");
+      } else {
+        errorMsg.classList.remove("hidden");
+      }
+    }
+  </script>
+</body>
 </html>
