@@ -9,7 +9,6 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Tailwind config (optional fine-tuning)
       tailwind.config = {
         theme: {
           extend: {
@@ -33,18 +32,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
-      /* Smooth backdrop blur for the hero card */
       .glass {
         background: rgba(255, 255, 255, 0.72);
         backdrop-filter: saturate(140%) blur(14px);
         -webkit-backdrop-filter: saturate(140%) blur(14px);
       }
-      /* Hide scroll when modal open */
-      body.modal-open { overflow: hidden; }
     </style>
   </head>
   <body class="min-h-screen bg-slate-50 bg-mesh font-sans text-slate-800 selection:bg-indigo-200 selection:text-slate-900">
-    <!-- Navbar (optional) -->
+    <!-- Navbar -->
     <header class="w-full">
       <nav class="max-w-6xl mx-auto px-4 md:px-6 py-5 flex items-center justify-between">
         <div class="flex items-center gap-3">
@@ -73,7 +69,7 @@
               إدارة حضور الموظفين <span class="bg-gradient-to-r from-indigo-600 to-emerald-600 bg-clip-text text-transparent">بدون تعقيد</span>
             </h1>
             <p class="mt-4 text-base md:text-lg text-slate-600 leading-8">
-              صفحة هبوط خفيفة مع زر يفتح نموذج حضور/انصراف لا يسمح للموظفين بتعديل أي بيانات في جداول الشركة. البيانات تُسجَّل بأمان عبر نموذج مستقل.
+              صفحة هبوط خفيفة مع زر يفتح نموذج حضور/انصراف مباشرة دون صلاحيات تعديل للموظفين.
             </p>
 
             <!-- CTA Buttons -->
@@ -85,33 +81,19 @@
                 </svg>
               </button>
 
-              <a id="adminLink" href="#" class="inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 md:px-6 md:py-3.5 text-base md:text-lg font-bold text-indigo-700 bg-white border border-indigo-200 hover:border-indigo-300 hover:bg-indigo-50 shadow-soft transition">
+              <a id="adminLink" href="https://ocean67-hr.com/login" class="inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 md:px-6 md:py-3.5 text-base md:text-lg font-bold text-indigo-700 bg-white border border-indigo-200 hover:border-indigo-300 hover:bg-indigo-50 shadow-soft transition">
                 الوصول للملف الوظيفي
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5a1 1 0 10-2 0v6a1 1 0 00.293.707l3 3a1 1 0 001.414-1.414L13 12.586V7z"/>
-                </svg>
               </a>
-            </div>
-
-            <!-- Trust badges (optional) -->
-            <div class="mt-6 flex flex-wrap items-center gap-3 text-xs text-slate-500">
-              <span class="inline-flex items-center gap-2 rounded-xl bg-white/80 border border-slate-200 px-3 py-1"><span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>بدون صلاحيات تعديل للموظفين</span>
-              <span class="inline-flex items-center gap-2 rounded-xl bg-white/80 border border-slate-200 px-3 py-1">تسجيل سريع من أي جهاز</span>
-              <span class="inline-flex items-center gap-2 rounded-xl bg-white/80 border border-slate-200 px-3 py-1">تصميم حديث وخفيف</span>
             </div>
           </div>
 
-          <!-- Illustration / Card -->
+          <!-- Illustration -->
           <div class="glass rounded-3xl p-6 md:p-8 border border-white/60 shadow-soft">
             <div class="grid grid-cols-2 gap-4">
               <div class="rounded-2xl bg-gradient-to-br from-indigo-100 to-white p-4 border border-indigo-200">
                 <div class="text-sm text-slate-600 mb-2">إجمالي الموظفين</div>
                 <div class="text-3xl font-extrabold">18</div>
               </div>
-              <!-- <div class="rounded-2xl bg-gradient-to-br from-emerald-100 to-white p-4 border border-emerald-200">
-                <div class="text-sm text-slate-600 mb-2">حضور اليوم</div>
-                <div class="text-3xl font-extrabold" id="todayCount">—</div>
-              </div> -->
               <div class="col-span-2 rounded-2xl bg-white p-4 border border-slate-200">
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-sm text-slate-600">آخر تحديث</span>
@@ -132,7 +114,7 @@
         <div class="grid md:grid-cols-3 gap-6">
           <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
             <h3 class="text-lg font-extrabold mb-2">حماية البيانات</h3>
-            <p class="text-slate-600">التسجيل عبر نموذج معزول يكتب في الشيت بدون منح أي صلاحيات تعديل للموظفين.</p>
+            <p class="text-slate-600">التسجيل عبر نموذج آمن دون أي صلاحيات تعديل للموظفين.</p>
           </div>
           <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
             <h3 class="text-lg font-extrabold mb-2">سهل الاستخدام</h3>
@@ -140,7 +122,7 @@
           </div>
           <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-soft">
             <h3 class="text-lg font-extrabold mb-2">جاهز للتوسع</h3>
-            <p class="text-slate-600">يمكن إضافة قيود الموقع، رقم الموظف، أو صورة سيلفي لاحقًا.</p>
+            <p class="text-slate-600">يمكن إضافة قيود الموقع أو رقم الموظف لاحقًا.</p>
           </div>
         </div>
       </section>
@@ -153,101 +135,27 @@
         <div class="flex items-center gap-4">
           <a class="hover:text-slate-800" href="mailto:hr@example.com">smaww.com</a>
           <span class="text-slate-300">|</span>
-          <a class="hover:text-slate-800" href="tel:+201000000000">+966554520700</a>
+          <a class="hover:text-slate-800" href="tel:+966554520700">+966554520700</a>
         </div>
       </div>
     </footer>
 
-    <!-- Attendance Modal -->
-    <div id="attendanceModal" class="fixed inset-0 z-50 hidden" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="absolute inset-0 bg-slate-900/60"></div>
-      <div class="relative mx-auto max-w-3xl h-[85vh] mt-10 bg-white rounded-3xl shadow-2xl border border-slate-200 flex flex-col">
-        <div class="px-5 py-4 border-b border-slate-200 flex items-center justify-between">
-          <h2 class="text-lg md:text-xl font-extrabold text-slate-900">تسجيل الحضور / الانصراف</h2>
-          <button id="closeAttendance" class="inline-flex items-center justify-center rounded-xl border border-slate-200 px-3 py-1.5 text-slate-600 hover:bg-slate-50">إغلاق</button>
-        </div>
-        <div class="flex-1 overflow-hidden">
-          <!--
-            ضع رابط نموذج Google Forms هنا في src أدناه.
-            1) أنشئ Google Form يحفظ النتائج في Google Sheet.
-            2) اجعل صلاحيات الشيت "خاص" أو للمشرفين فقط (لا تشاركها مع الموظفين).
-            3) شارك فقط رابط النموذج، أو ضعه داخل هذه النافذة المنبثقة.
-          -->
-          <iframe id="formFrame" src="https://docs.google.com/forms/d/e/FORM_ID/viewform?embedded=true" class="w-full h-full" frameborder="0" allowfullscreen referrerpolicy="no-referrer"></iframe>
-        </div>
-      </div>
-    </div>
-
     <script>
-      // ===== Util: Animate demo progress and timestamps =====
-      const todayCountEl = document.getElementById('todayCount');
+      // ===== معلومات تجريبية =====
       const lastUpdatedEl = document.getElementById('lastUpdated');
       const progressBarEl = document.getElementById('progressBar');
       const yearEl = document.getElementById('year');
       const now = new Date();
       yearEl.textContent = now.getFullYear();
       lastUpdatedEl.textContent = new Intl.DateTimeFormat('ar-EG', { dateStyle: 'medium', timeStyle: 'short' }).format(now);
-      // Demo numbers only
-      const demo = Math.floor(Math.random() * 18) + 18; // 18–35
-      todayCountEl.textContent = demo;
+      const demo = Math.floor(Math.random() * 18) + 18;
       progressBarEl.style.width = Math.min(100, Math.round((demo/42)*100)) + '%';
 
-      // ===== Modal open/close =====
-      const body = document.body;
-      const modal = document.getElementById('attendanceModal');
+      // ===== زر فتح النموذج =====
       const openBtn = document.getElementById('openAttendance');
-      const closeBtn = document.getElementById('closeAttendance');
-      const formFrame = document.getElementById('formFrame');
-      const adminLink = document.getElementById('adminLink');
-
-      // Replace with your URLs
-      const FORM_URL = 'https://forms.gle/vHLTFPecqijVEYGU7';
-      const ADMIN_DASHBOARD_URL = 'https://ocean67-hr.com/login'; // أو رابط Google Sheet (عرض فقط)
-
-      // Set URLs
-      formFrame.src = FORM_URL;
-      adminLink.href = ADMIN_DASHBOARD_URL;
-
-      function openModal() {
-        modal.classList.remove('hidden');
-        body.classList.add('modal-open');
-        // Focus the frame for accessibility
-        setTimeout(() => formFrame?.focus?.(), 50);
-      }
-      function closeModal() {
-        modal.classList.add('hidden');
-        body.classList.remove('modal-open');
-      }
-      openBtn.addEventListener('click', openModal);
-      closeBtn.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
+      openBtn.addEventListener('click', () => {
+        window.open('https://forms.gle/vHLTFPecqijVEYGU7', '_blank');
       });
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
-      });
-
-      // ===== Optional: pass user agent & time as form query params (if fields exist pre-filled) =====
-      // لإرسال معرف الجهاز/الوقت إلى حقول مخفية في Google Form، أنشئ حقول "إجابة قصيرة" واجعلها أسئلة غير مطلوبة،
-      // ثم استخرج أسماء مفاتيح prefill من ميزة "الحصول على رابط مُسبق التعبئة" في Google Forms.
-      // بعد ذلك، عيّن القيم بالأسفل.
-      const PREFILL_KEYS = {
-        // مثال: employeeId: 'entry.1234567890',
-        //       device: 'entry.0987654321',
-        //       time: 'entry.1122334455'
-      };
-      function withPrefill(url, params) {
-        const u = new URL(url);
-        Object.entries(params).forEach(([k,v]) => {
-          if (!PREFILL_KEYS[k]) return;
-          u.searchParams.set(PREFILL_KEYS[k], v);
-        });
-        return u.toString();
-      }
-      // مثال تعبئة تلقائية بالوقت والجهاز (لو أضفت المفاتيح):
-      // const prefilled = withPrefill(FORM_URL, { device: navigator.userAgent, time: new Date().toISOString() });
-      // formFrame.src = prefilled;
     </script>
   </body>
 </html>
-
